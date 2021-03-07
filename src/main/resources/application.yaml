@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: my-cluster-kafka-brokers.kafka.svc:9092
+          auto-create-topics: true
+          configuration:
+            auto.offset.reset: latest
+      bindings:
+        master-channel-in:
+          destination: master-channel
+          group: master-channel-group
+          contentType: application/json
+        master-channel-out:
+          destination: master-channel
+          contentType: application/json
