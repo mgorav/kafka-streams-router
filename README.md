@@ -11,7 +11,7 @@ development. This will further, enable engineers (software/data scientist etc) t
 bogged down with infrastructure challenges.
 
 The famous cloud says "**bring your own container/notebook"**, I say "bring your function business logic". Which will enable engineers
-to think software development only and no bothered by the surrounding annoyance.
+to think software development only and not bothered by the surrounding annoyance.
 
 The goal of this project is to create kafka connector using Spring Cloud Stream, which routes the incoming messages to
 a "function" build using OpenFaas which is annotated with annotation **topic**.
