@@ -2,7 +2,7 @@
 
 ## Overview
 
-In this blog, I will explore the programing pradim, which I call, bring your function to the kafka cluster, I DO NOT CARE,
+In this blog, I will explore the programing paradigm, which I call, bring your function to the kafka cluster, I DO NOT CARE,
 how the message from Kafka is delivered to it. This concept will provide programming ease and enable engineers to 
 think - "just function" to write business logic in the programing logic of your choice.
 
