@@ -2,14 +2,26 @@
 
 ## Overview
 
-The goal of this project is to create kafka connector using Spring Cloud Stream, which routes the incoming messages to
-a "function" build using OpenFaas which is annotated with annotation topic.
+In this blog, I will explore the programing pradim, which I call, bring your function to the kafka cluster, I DO NOT CARE,
+how the message from Kafka is delivered to it. This concept will provide programming ease and enable engineers to 
+think - "just function" to write business logic in the programing logic of your choice.
 
-Hence, it connects Kafka topics to OpenFaaS Functions. Once deployed the kafka-connector and pointing to broker, user
+The serverless function as service also called "infrastructure on demand", provides simplicity,decoupling and ease in 
+development. This will further, enable engineers (software/data scientist etc) to concentrate to their trait rather than 
+bogged down with infrastructure challenges.
+
+The famous cloud says "**bring your own container/notebook"**, I say "bring your function business logic". Which engineer
+will not like to think software development only and no bothered by the surrounding annoyance.
+
+The goal of this project is to create kafka connector using Spring Cloud Stream, which routes the incoming messages to
+a "function" build using OpenFaas which is annotated with annotation **topic**.
+
+Hence, it connects Kafka topics to OpenFaaS Functions. Once deployed the kafka-connector and pointing broker, user
 can connect functions to topics by adding a simple annotation to a function's stack.yml file.
 
-This is paid offering from OpenFaas, however, this provides open source offering. Also this project is deployable on
-k8s. It uses jkube with zero k8s configuration.
+**_This is paid offering from OpenFaas, however, this provides open source offering. Also this project is deployable on
+k8s. It uses jkube with zero k8s configuration._** The programing model demonstrate, k8s native solution with zero k8s 
+yaml development -  "productivity boost"
 
 Following picture shows the design:
 
