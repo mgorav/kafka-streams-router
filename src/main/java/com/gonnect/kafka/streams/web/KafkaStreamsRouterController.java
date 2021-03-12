@@ -3,12 +3,17 @@ package com.gonnect.kafka.streams.web;
 import com.gonnect.kafka.k8s.K8sService;
 import com.gonnect.kafka.streams.model.RoutableMessage;
 import com.gonnect.kafka.streams.service.KafkaRoutingService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import static org.springframework.http.HttpStatus.ACCEPTED;
+import static org.springframework.http.HttpStatus.CREATED;
+
 @RestController
+@Slf4j
 public class KafkaStreamsRouterController {
 
     private final KafkaRoutingService kafkaRoutingService;
@@ -19,15 +24,11 @@ public class KafkaStreamsRouterController {
         this.k8sService = new K8sService();
     }
 
-    @GetMapping("/router")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public ResponseEntity<RoutableMessage> router(@RequestParam("message") String message) {
-        RoutableMessage routableMessage = RoutableMessage.builder()
-                .message(message)
-                .boundedFunctions(k8sService.getAnnotatedFunctions())
-                .topicName("master-channel")
-                .timestamp(System.currentTimeMillis())
-                .build();
+    @PostMapping("/fn-router")
+    @ResponseStatus(CREATED)
+    public ResponseEntity<RoutableMessage> router(@RequestBody RoutableMessage message) {
+        message.setBoundedFunctions(k8sService.getAnnotatedFunctions());
+        RoutableMessage routableMessage = new RoutableMessage(message);
 
         kafkaRoutingService.router(routableMessage);
 

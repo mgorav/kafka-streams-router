@@ -15,3 +15,12 @@ spring:
         master-channel-out:
           destination: master-channel
           contentType: application/json
+springdoc:
+  version: '@springdoc.version@'
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    displayRequestDuration: true
+    tagsSorter: alpha

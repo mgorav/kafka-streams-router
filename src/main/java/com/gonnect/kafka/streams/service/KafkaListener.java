@@ -61,6 +61,7 @@ public class KafkaListener {
         WebClient.RequestHeadersSpec headersSpec = bodySpec.body(
                 BodyInserters.fromPublisher(Mono.just(routableMessage.getMessage()), String.class)
         );
+        log.info("Invoking function {}", functionName);
 
         Mono<String> response = headersSpec.retrieve().bodyToMono(String.class);
 
